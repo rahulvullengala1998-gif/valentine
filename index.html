@@ -6,19 +6,20 @@
 <body style="text-align:center; font-family:Arial; margin-top:100px;">
   <h2>Will you be my Valentine? ❤️</h2>
 
-  <button id="yesBtn" onclick="yesClicked(this)" style="font-size:20px; position:absolute; left:40%;">
+  <button onclick="yesClicked(this)" style="font-size:20px; position:absolute; left:40%;">
     Yes
   </button>
 
-  <button onclick="unlockYes()" style="font-size:20px; position:absolute; left:55%;">
+  <button onclick="noClicked(this)" style="font-size:20px; position:absolute; left:55%;">
     No
   </button>
 
   <script>
-    let unlocked = false;
+    let attemptCount = 0;
 
     function yesClicked(btn) {
-      if (!unlocked) {
+      if (attemptCount < 3) {
+        attemptCount++;
         moveButton(btn);
       } else {
         document.body.innerHTML =
@@ -26,8 +27,9 @@
       }
     }
 
-    function unlockYes() {
-      unlocked = true;
+    function noClicked(btn) {
+      attemptCount++;
+      moveButton(btn);
     }
 
     function moveButton(btn) {
