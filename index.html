@@ -6,25 +6,26 @@
 <body style="text-align:center; font-family:Arial; margin-top:100px;">
   <h2>Will you be my Valentine? ❤️</h2>
 
-  <button onclick="yesClicked()" style="font-size:20px;">Yes</button>
-  <button onclick="moveButton(this)" style="font-size:20px; position:absolute;">
-    No
-  </button>
+  <button id="yesBtn" onclick="yesClicked()" style="font-size:20px;">Yes</button>
+  <button id="noBtn" onclick="noClicked()" style="font-size:20px;">No</button>
 
-  <p id="msg"></p>
+  <p id="msg" style="color:red; font-size:18px;"></p>
 
   <script>
-    function yesClicked() {
-      document.getElementById("msg").innerText = "Wait for it... ❤️";
+    let noClickedOnce = false;
 
-      setTimeout(function() {
+    function yesClicked() {
+      if (!noClickedOnce) {
+        document.getElementById("msg").innerText = "Click on No first 😜";
+      } else {
         document.body.innerHTML = "<h1>Thanks, my Valentine ❤️</h1>";
-      }, 2000); // 2 seconds delay
+      }
     }
 
-    function moveButton(btn) {
-      btn.style.top = Math.random() * 400 + "px";
-      btn.style.left = Math.random() * 300 + "px";
+    function noClicked() {
+      noClickedOnce = true;
+      document.getElementById("msg").innerText = "Now click Yes ❤️";
+      document.getElementById("noBtn").disabled = true;
     }
   </script>
 </body>
