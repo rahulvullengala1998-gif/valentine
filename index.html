@@ -10,22 +10,24 @@
     Yes
   </button>
 
-  <button id="noBtn" onclick="moveButton(this)" style="font-size:20px; position:absolute; left:55%;">
+  <button onclick="unlockYes()" style="font-size:20px; position:absolute; left:55%;">
     No
   </button>
 
   <script>
-    let yesClickCount = 0;
+    let unlocked = false;
 
     function yesClicked(btn) {
-      yesClickCount++;
-
-      if (yesClickCount === 1) {
+      if (!unlocked) {
         moveButton(btn);
       } else {
         document.body.innerHTML =
           "<h1 style='text-align:center;margin-top:100px;'>Thanks, my Valentine ❤️</h1>";
       }
+    }
+
+    function unlockYes() {
+      unlocked = true;
     }
 
     function moveButton(btn) {
