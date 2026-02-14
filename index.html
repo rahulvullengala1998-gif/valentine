@@ -1,41 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Valentine</title>
+  <title>My Valentine ❤️</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 100px;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      overflow: hidden;
+    }
+
+    h2 {
+      color: white;
+      font-size: 28px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yesBtn { left: 40%; }
+    #noBtn { left: 55%; }
+  </style>
 </head>
-<body style="text-align:center; font-family:Arial; margin-top:100px;">
-  <h2>Will you be my Valentine? ❤️</h2>
+<body>
 
-  <button onclick="yesClicked(this)" style="font-size:20px; position:absolute; left:40%;">
-    Yes
-  </button>
+  <h2>Will you be my Valentine, Kannaya? 💕</h2>
 
-  <button onclick="noClicked(this)" style="font-size:20px; position:absolute; left:55%;">
-    No
-  </button>
+  <button id="yesBtn" onclick="yesClicked(this)">Yes ❤️</button>
+  <button id="noBtn" onclick="moveButton(this)">No 😜</button>
 
   <script>
     let attemptCount = 0;
 
     function yesClicked(btn) {
-      if (attemptCount < 3) {
+      if (attemptCount < 4) {
         attemptCount++;
         moveButton(btn);
       } else {
-        document.body.innerHTML =
-          "<h1 style='text-align:center;margin-top:100px;'>Thanks, my Valentine ❤️</h1>";
+        document.body.innerHTML = `
+          <h1 style="color:white; margin-top:120px;">
+            Kannaya ❤️
+          </h1>
+          <p style="color:white; font-size:22px;">
+            You just made my world brighter, Kannaya 💖<br>
+            Thank you for being my Valentine 🌹<br><br>
+            I promise to keep you smiling forever ✨
+          </p>
+        `;
       }
     }
 
-    function noClicked(btn) {
-      attemptCount++;
-      moveButton(btn);
-    }
-
     function moveButton(btn) {
+      attemptCount++;
       btn.style.top = Math.random() * 400 + "px";
       btn.style.left = Math.random() * 300 + "px";
     }
   </script>
+
 </body>
 </html>
