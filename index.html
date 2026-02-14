@@ -6,26 +6,31 @@
 <body style="text-align:center; font-family:Arial; margin-top:100px;">
   <h2>Will you be my Valentine? ❤️</h2>
 
-  <button id="yesBtn" onclick="yesClicked()" style="font-size:20px;">Yes</button>
-  <button id="noBtn" onclick="noClicked()" style="font-size:20px;">No</button>
+  <button id="yesBtn" onclick="yesClicked(this)" style="font-size:20px; position:absolute; left:40%;">
+    Yes
+  </button>
 
-  <p id="msg" style="color:red; font-size:18px;"></p>
+  <button id="noBtn" onclick="moveButton(this)" style="font-size:20px; position:absolute; left:55%;">
+    No
+  </button>
 
   <script>
-    let noClickedOnce = false;
+    let yesClickCount = 0;
 
-    function yesClicked() {
-      if (!noClickedOnce) {
-        document.getElementById("msg").innerText = "Click on No first 😜";
+    function yesClicked(btn) {
+      yesClickCount++;
+
+      if (yesClickCount === 1) {
+        moveButton(btn);
       } else {
-        document.body.innerHTML = "<h1>Thanks, my Valentine ❤️</h1>";
+        document.body.innerHTML =
+          "<h1 style='text-align:center;margin-top:100px;'>Thanks, my Valentine ❤️</h1>";
       }
     }
 
-    function noClicked() {
-      noClickedOnce = true;
-      document.getElementById("msg").innerText = "Now click Yes ❤️";
-      document.getElementById("noBtn").disabled = true;
+    function moveButton(btn) {
+      btn.style.top = Math.random() * 400 + "px";
+      btn.style.left = Math.random() * 300 + "px";
     }
   </script>
 </body>
