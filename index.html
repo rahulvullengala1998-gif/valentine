@@ -11,9 +11,15 @@
     No
   </button>
 
+  <p id="msg"></p>
+
   <script>
     function yesClicked() {
-      document.body.innerHTML = "<h1>Thanks, my Valentine ❤️</h1>";
+      document.getElementById("msg").innerText = "Wait for it... ❤️";
+
+      setTimeout(function() {
+        document.body.innerHTML = "<h1>Thanks, my Valentine ❤️</h1>";
+      }, 2000); // 2 seconds delay
     }
 
     function moveButton(btn) {
